@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "76237912386",
+    "firebase_url": "https://yourbook-6d26a-default-rtdb.firebaseio.com",
+    "project_id": "yourbook-6d26a",
+    "storage_bucket": "yourbook-6d26a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:76237912386:android:1145e013fbc926a45170db",
+        "android_client_info": {
+          "package_name": "com.example.yourestore"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAE5LV5PVuQY0ReP2vPjCjfoEt_fsTyJzk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
