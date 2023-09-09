@@ -26,14 +26,19 @@
             android:src="@drawable/back_arrow"
             tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
-        <ImageView
-            android:layout_width="131dp"
-            android:layout_height="131dp"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="20dp"
-            android:src="@drawable/logo1" />
+
 
     </RelativeLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add new Books"
+        android:layout_gravity="center"
+        android:textColor="#000000"
+        android:textSize="31dp"
+        android:textStyle="bold"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"/>
 
     <androidx.cardview.widget.CardView
         android:id="@+id/card1"
@@ -45,125 +50,149 @@
         android:background="#F6F2F2"
         android:layout_marginBottom="-20dp">
 
-        <LinearLayout
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="28dp"
-            android:background="#FAF9F6">
+            android:layout_height="602dp">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Add new Books"
-                android:layout_gravity="center"
-                android:textColor="#000000"
-                android:textSize="31dp"
-                android:textStyle="bold" />
-
-            <View
-                android:layout_width="wrap_content"
-                android:layout_height="5dp"/>
-
-            <ImageButton
-                android:id="@+id/btnImageBook"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_gravity="center"
-                android:src="@drawable/book123"
-                />
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/edt_title"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:hintEnabled="false">
+                android:layout_height="593dp"
+                android:background="#FAF9F6"
+                android:orientation="vertical"
+                android:padding="30dp">
 
-                <EditText
-                    android:id="@+id/edtTitle"
+
+                <ImageView
+                    android:layout_width="131dp"
+                    android:layout_height="200dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="20dp"
+                    android:src="@drawable/updbook" />
+
+
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp" />
+
+                <ImageButton
+                    android:id="@+id/btnImageBook"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/book123" />
+
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/edt_title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:drawablePadding="11dp"
-                    android:hint="Title"
-                    android:inputType="text"
-                    android:padding="11dp"
-                    android:textColor="@color/black"
-                    android:textColorHint="@color/black"
-                    tools:ignore="TouchTargetSizeCheck" />
+                    app:hintEnabled="true">
 
-            </com.google.android.material.textfield.TextInputLayout>
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawablePadding="11dp"
+                        android:hint="Book Title"
+                        android:inputType="text"
+                        android:padding="11dp"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/black"
+                        tools:ignore="TouchTargetSizeCheck" />
 
-            <View
-                android:layout_width="wrap_content"
-                android:layout_height="10dp"/>
+                </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/edt_author"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:hintEnabled="true">
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="10dp" />
 
-                <EditText
-                    android:id="@+id/edtAuthor"
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/edt_author"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:drawablePadding="11dp"
-                    android:hint="Author Name"
-                    android:inputType="text"
-                    android:padding="11dp"
-                    android:textColor="@color/black"
-                    android:textColorHint="@color/black"
-                    tools:ignore="TouchTargetSizeCheck" />
+                    app:hintEnabled="true">
 
-            </com.google.android.material.textfield.TextInputLayout>
+                    <EditText
+                        android:id="@+id/edtAuthor"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawablePadding="11dp"
+                        android:hint="Author Name"
+                        android:inputType="text"
+                        android:padding="11dp"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/black"
+                        tools:ignore="TouchTargetSizeCheck" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="10dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/forspiner"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:padding="11dp"
+                        android:text="Subject"
+                        android:textColor="@color/black"
+                        android:textSize="15dp"></TextView>
 
 
-            <View
-                android:layout_width="wrap_content"
-                android:layout_height="10dp"/>
+                    <Spinner
+                        android:id="@+id/listOfCategory"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
 
-            <Spinner
-                android:id="@+id/listOfCategory"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                tools:ignore="TouchTargetSizeCheck" />
+                        android:paddingLeft="2dp"></Spinner>
+                </LinearLayout>
 
-            <View
-                android:layout_width="wrap_content"
-                android:layout_height="10dp"/>
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="10dp" />
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/edt_description"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:hintEnabled="true">
-
-                <EditText
-                    android:id="@+id/edtDiscription"
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/edt_description"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:drawablePadding="11dp"
-                    android:hint="Description"
-                    android:inputType="text"
-                    android:padding="11dp"
-                    android:textColor="@color/black"
-                    android:textColorHint="@color/black"
-                    tools:ignore="TouchTargetSizeCheck" />
+                    app:hintEnabled="true">
 
-            </com.google.android.material.textfield.TextInputLayout>
+                    <EditText
+                        android:id="@+id/edtDiscription"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawablePadding="11dp"
+                        android:hint="Description"
+                        android:inputType="text"
+                        android:padding="11dp"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/black"
+                        tools:ignore="TouchTargetSizeCheck" />
 
-            <View
-                android:layout_width="wrap_content"
-                android:layout_height="10dp"/>
+                </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnUpload"
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:text="Upload"
-                android:background="@drawable/button_shape"
-                app:cornerRadius="32dp"/>
-        </LinearLayout>
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnUpload"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:background="@drawable/button_shape"
+                    android:text="Upload"
+                    app:cornerRadius="32dp" />
+            </LinearLayout>
+        </ScrollView>
     </androidx.cardview.widget.CardView>
 
 </RelativeLayout>
