@@ -63,24 +63,27 @@
 
 
                 <ImageView
+
                     android:layout_width="131dp"
                     android:layout_height="200dp"
                     android:layout_centerHorizontal="true"
                     android:layout_gravity="center"
                     android:layout_marginTop="20dp"
-                    android:src="@drawable/updbook" />
+                    android:src="@drawable/updimg" />
 
 
                 <View
                     android:layout_width="wrap_content"
                     android:layout_height="25dp" />
 
-                <ImageButton
+                <Button
+                    android:text="Upload PDF"
+                    android:textAlignment="textStart"
                     android:id="@+id/btnImageBook"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_gravity="center"
-                    android:src="@drawable/book123" />
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:drawableEnd="@drawable/book123"
+                    android:background="@drawable/forspiner"/>
 
                 <View
                     android:layout_width="wrap_content"
