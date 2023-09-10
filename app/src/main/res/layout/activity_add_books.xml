@@ -32,7 +32,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Add new Books"
+        android:text="Add new Book"
         android:layout_gravity="center"
         android:textColor="#000000"
         android:textSize="31dp"
@@ -63,14 +63,16 @@
 
 
                 <ImageView
-
-                    android:layout_width="131dp"
-                    android:layout_height="200dp"
+                    android:id="@+id/image"
+                    android:layout_width="175dp"
+                    android:layout_height="250dp"
                     android:layout_centerHorizontal="true"
                     android:layout_gravity="center"
                     android:layout_marginTop="20dp"
+                    android:background="@drawable/forspiner"
+                    android:foregroundGravity="center"
+                    android:paddingHorizontal="5dp"
                     android:src="@drawable/updimg" />
-
 
                 <View
                     android:layout_width="wrap_content"
@@ -79,7 +81,7 @@
                 <Button
                     android:text="Upload PDF"
                     android:textAlignment="textStart"
-                    android:id="@+id/btnImageBook"
+                    android:id="@+id/upload_pdf"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:drawableEnd="@drawable/book123"
@@ -90,7 +92,7 @@
                     android:layout_height="20dp" />
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/edt_title"
+                    android:id="@+id/book_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:hintEnabled="true">
@@ -113,13 +115,13 @@
                     android:layout_height="10dp" />
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/edt_author"
+                    android:id="@+id/author_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:hintEnabled="true">
 
                     <EditText
-                        android:id="@+id/edtAuthor"
+
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:drawablePadding="11dp"
@@ -152,10 +154,12 @@
 
 
                     <Spinner
-                        android:id="@+id/listOfCategory"
+                        android:id="@+id/catagary"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-
+                        android:gravity="center"
+                        android:textColor="@color/black"
+                        android:textAlignment="center"
                         android:paddingLeft="2dp"></Spinner>
                 </LinearLayout>
 
@@ -164,13 +168,13 @@
                     android:layout_height="10dp" />
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/edt_description"
+                    android:id="@+id/description"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:hintEnabled="true">
 
                     <EditText
-                        android:id="@+id/edtDiscription"
+
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:drawablePadding="11dp"
@@ -188,7 +192,7 @@
                     android:layout_height="40dp" />
 
                 <com.google.android.material.button.MaterialButton
-                    android:id="@+id/btnUpload"
+                    android:id="@+id/insert_book"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
                     android:background="@drawable/button_shape"
