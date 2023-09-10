@@ -49,7 +49,7 @@ public class AddBooks extends AppCompatActivity {
 
     //for spiner
     FirebaseDatabase database = FirebaseDatabase.getInstance();
-    DatabaseReference myRef = database.getReference("message");
+    DatabaseReference myRef = database.getReference("subjects");
 
     Integer pic=100;
     Integer pdf=200;
@@ -88,7 +88,7 @@ public class AddBooks extends AppCompatActivity {
         });
 
         ArrayList<String> spiner_list = new ArrayList<>();
-        ArrayAdapter<String> spiner_adapter = new ArrayAdapter<>(this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item,spiner_list);
+        ArrayAdapter<String> spiner_adapter = new ArrayAdapter<>(this,R.layout.custom_spiner,spiner_list);
         catagary.setAdapter(spiner_adapter);
         myRef.addValueEventListener(new ValueEventListener() {
             @Override

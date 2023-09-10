@@ -41,7 +41,7 @@ public class AddCategory extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 FirebaseDatabase database = FirebaseDatabase.getInstance();
-                DatabaseReference myRef = database.getReference("message");
+                DatabaseReference myRef = database.getReference("subjects");
 
                 if(addcat != null)
                 {
