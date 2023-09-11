@@ -198,16 +198,22 @@ public class AddBooks extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode == pic)
         {
-            input_image=data.getData();
-            img.setImageURI(input_image);
-            img.setBackgroundResource(0);
 
+            if(data != null)
+            {
+                input_image=data.getData();
+                img.setImageURI(input_image);
+                img.setBackgroundResource(0);
+            }
         }
         else if (requestCode == pdf)
         {
-            input_pdf=data.getData();
-            upload_pdf.setText("view pdf");
 
+            if(data != null)
+            {
+                input_pdf=data.getData();
+                upload_pdf.setText("view pdf");
+            }
 
         }
     }

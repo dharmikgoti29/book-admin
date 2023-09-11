@@ -15,6 +15,9 @@
         android:theme="@style/Theme.YoureStore"
         tools:targetApi="31">
         <activity
+            android:name=".Catagary_books"
+            android:exported="false" />
+        <activity
             android:name=".view_books"
             android:exported="false" />
         <activity

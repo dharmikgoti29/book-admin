@@ -63,7 +63,10 @@ public class view_books extends AppCompatActivity {
                 recycle_list.clear();
                 for(DataSnapshot snapshot1 : snapshot.getChildren())
                 {
-                    model model = new model(snapshot1.getValue().toString());
+                    String cat_name,cat_id;
+                    cat_id= snapshot1.getKey().toString();
+                    cat_name=snapshot1.getValue().toString();
+                    model model = new model(cat_name,cat_id);
                     recycle_list.add(model);
                 }
                 recycleadapter.notifyDataSetChanged();

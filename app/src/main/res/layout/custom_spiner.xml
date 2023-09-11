@@ -5,6 +5,7 @@
     android:textAlignment="center"
     android:gravity="center"
     android:textColor="@color/black"
+    android:background="@drawable/forspiner"
     android:textSize="17dp"
     >
 </TextView>
