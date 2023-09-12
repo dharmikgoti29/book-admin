@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="140dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginBottom="5dp"
+    app:cardBackgroundColor="@color/white"
+    app:cardCornerRadius="5dp"
+    app:cardElevation="8dp"
+    app:contentPadding="5dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:id="@+id/img_pdf"
+            android:layout_width="100dp"
+            android:layout_height="140dp"
+            android:layout_marginEnd="5dp"
+            android:background="#EFEDED">
+
+            <ImageView
+                android:id="@+id/imgView_pdf"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/txtTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Book Title"
+            android:layout_toRightOf="@+id/img_pdf"
+            android:maxLines="5"/>
+
+        <TextView
+            android:id="@+id/txtDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Book Description"
+            android:layout_toRightOf="@+id/img_pdf"
+            android:layout_below="@+id/txtTitle"
+            android:maxLines="1"/>
+
+        <TextView
+            android:id="@+id/txtAuthorName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Author Name"
+            android:layout_toRightOf="@+id/img_pdf"
+            android:layout_below="@+id/txtDescription"
+            android:maxLines="1"/>
+        <TextView
+            android:id="@+id/txtsubject"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="subject"
+            android:layout_toRightOf="@+id/img_pdf"
+            android:layout_below="@+id/txtAuthorName"
+            android:maxLines="1"/>
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

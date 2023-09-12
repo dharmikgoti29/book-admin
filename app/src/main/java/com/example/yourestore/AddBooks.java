@@ -32,8 +32,11 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.google.protobuf.Empty;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 public class AddBooks extends AppCompatActivity {
@@ -160,6 +163,9 @@ public class AddBooks extends AppCompatActivity {
                 bookname=book_name.getText().toString();
                 authorname=author_name.getText().toString();
                 desc=description.getText().toString();
+                Date currentDate = new Date();
+                SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
+                String dateString = dateFormat.format(currentDate);
 
                 if(bookname.isEmpty() || authorname.isEmpty() || desc.isEmpty() || cata.isEmpty() || input_pdf==null || input_image==null)
                 {
@@ -173,6 +179,7 @@ public class AddBooks extends AppCompatActivity {
                     book_detail.put("authorname",authorname);
                     book_detail.put("subject",cata);
                     book_detail.put("discription",desc);
+                    book_detail.put("upload_date",dateString);
                     db.collection("books").add(book_detail).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                         @Override
                         public void onSuccess(DocumentReference documentReference) {
@@ -184,7 +191,6 @@ public class AddBooks extends AppCompatActivity {
                             imgReference=storageReference.child(imgname);
                             UploadTask uploadTask1 = imgReference.putFile(input_image);
                             Toast.makeText(AddBooks.this, "book uploaded", Toast.LENGTH_SHORT).show();
-
                         }
                     });
 
