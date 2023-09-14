@@ -78,7 +78,8 @@ public class Catagary_books extends AppCompatActivity {
                                 String b = queryDocumentSnapshot.getString("authorname");
                                 String c = queryDocumentSnapshot.getString("discription");
                                 String s= queryDocumentSnapshot.getString("subject");
-                                model_recycle model_recycle = new model_recycle(a,b,c,imgname,s);
+                                String d= queryDocumentSnapshot.getString("upload_date");
+                                model_recycle model_recycle = new model_recycle(a,b,c,imgname,s,d,documentid);
                                 if(subject.equals(s))
                                 {
                                     recycle_list.add(model_recycle);

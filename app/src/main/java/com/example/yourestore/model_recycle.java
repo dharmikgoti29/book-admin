@@ -1,18 +1,20 @@
 package com.example.yourestore;
 
 public class model_recycle {
-    String book_title,book_author,description,image,subject;
+    String book_title,book_author,description,image,subject,date,documentid;
     model_recycle()
     {
 
     }
-    model_recycle(String book_title,String book_author,String description,String image,String subject)
+    model_recycle(String book_title,String book_author,String description,String image,String subject,String date,String documentid)
     {
         this.book_title=book_title;
         this.book_author=book_author;
         this.description=description;
         this.image=image;
         this.subject=subject;
+        this.date=date;
+        this.documentid=documentid;
     }
 
     public String getBook_title() {
@@ -53,5 +55,21 @@ public class model_recycle {
 
     public void setSubject(String subject) {
         this.subject = subject;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public String getDocumentid() {
+        return documentid;
+    }
+
+    public void setDocumentid(String documentid) {
+        this.documentid = documentid;
     }
 }
