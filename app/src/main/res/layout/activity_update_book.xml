@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/backimg2"
+    tools:context=".AddBooks">
+
+    <RelativeLayout
+        android:id="@+id/rela2"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:background="@drawable/login_relativ_shap">
+
+        <ImageButton
+            android:id="@+id/btnBackfromadd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="11dp"
+            android:layout_marginTop="11dp"
+            android:layout_marginEnd="11dp"
+            android:layout_marginBottom="11dp"
+            android:background="#FFCA29"
+            android:padding="5dp"
+            android:src="@drawable/back_arrow"
+            tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
+
+
+    </RelativeLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Update Book"
+        android:layout_gravity="center"
+        android:textColor="#000000"
+        android:textSize="31dp"
+        android:textStyle="bold"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"/>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        app:cardCornerRadius="28dp"
+        android:layout_margin="20dp"
+        android:background="#F6F2F2"
+        android:layout_marginBottom="-20dp">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="602dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="593dp"
+                android:background="#FAF9F6"
+                android:orientation="vertical"
+                android:padding="30dp">
+
+
+                <ImageView
+                    android:id="@+id/image"
+                    android:layout_width="175dp"
+                    android:layout_height="250dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="20dp"
+                    android:foregroundGravity="center"
+                    android:paddingHorizontal="5dp"
+                    android:src="@drawable/updimg" />
+
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:orientation="horizontal"
+                    >
+                    <Button
+                        android:text="view pdf"
+                        android:textAlignment="textStart"
+                        android:id="@+id/upload_pdf"
+                        android:layout_width="125dp"
+                        android:layout_height="40dp"
+                        android:drawableEnd="@drawable/book123"
+                        android:background="@drawable/forspiner"/>
+                    <Button
+                        android:text="insert pdf"
+                        android:textAlignment="textStart"
+                        android:id="@+id/insert_pdf"
+                        android:layout_width="125dp"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="12dp"
+                        android:drawableEnd="@drawable/book123"
+                        android:background="@drawable/forspiner"/>
+
+                </LinearLayout>
+
+
+
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/book_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:hintEnabled="true">
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawablePadding="11dp"
+                        android:hint="Book Title"
+                        android:inputType="text"
+                        android:padding="11dp"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/black"
+                        tools:ignore="TouchTargetSizeCheck" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="10dp" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/author_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:hintEnabled="true">
+
+                    <EditText
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawablePadding="11dp"
+                        android:hint="Author Name"
+                        android:inputType="text"
+                        android:padding="11dp"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/black"
+                        tools:ignore="TouchTargetSizeCheck" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="10dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/forspiner"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:padding="11dp"
+                        android:text="Subject"
+                        android:textColor="@color/black"
+                        android:textSize="15dp"></TextView>
+
+
+                    <Spinner
+                        android:id="@+id/catagary"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:textColor="@color/black"
+                        android:textAlignment="center"
+                        android:background="@android:color/transparent"
+                        android:paddingLeft="2dp"></Spinner>
+                </LinearLayout>
+
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="10dp" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/description"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:hintEnabled="true">
+
+                    <EditText
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawablePadding="11dp"
+                        android:hint="Description"
+                        android:inputType="text"
+                        android:padding="11dp"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/black"
+                        tools:ignore="TouchTargetSizeCheck" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/insert_book"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:background="@drawable/button_shape"
+                    android:text="Update book"
+                    app:cornerRadius="32dp" />
+            </LinearLayout>
+        </ScrollView>
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>

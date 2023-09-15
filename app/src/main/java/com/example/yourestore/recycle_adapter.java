@@ -84,7 +84,11 @@ public class recycle_adapter extends RecyclerView.Adapter<recycle_adapter.myview
                         int itemId = menuItem.getItemId();
 
                         if (itemId == R.id.action_update) {
-                            Toast.makeText(context, "update", Toast.LENGTH_SHORT).show();
+
+                            Intent intent = new Intent(context,update_book.class);
+                            intent.putExtra("documentid",documentid);
+                            context.startActivity(intent);
+
                             return true;
                         } else if (itemId == R.id.action_delete) {
                             AlertDialog.Builder builder = new AlertDialog.Builder(context);
@@ -100,7 +104,8 @@ public class recycle_adapter extends RecyclerView.Adapter<recycle_adapter.myview
                                             .addOnSuccessListener(new OnSuccessListener<Void>() {
                                                 @Override
                                                 public void onSuccess(Void aVoid) {
-                                                    pdfReference.delete()
+                                                    pdfReference.delete();
+                                                    imgReference.delete()
                                                             .addOnSuccessListener(new OnSuccessListener<Void>() {
                                                                 @Override
                                                                 public void onSuccess(Void aVoid) {
@@ -113,7 +118,6 @@ public class recycle_adapter extends RecyclerView.Adapter<recycle_adapter.myview
                                                                     Toast.makeText(context, "book deletion failed", Toast.LENGTH_SHORT).show();
                                                                 }
                                                             });
-
                                                 }
                                             })
                                             .addOnFailureListener(new OnFailureListener() {

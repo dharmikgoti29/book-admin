@@ -86,6 +86,7 @@ public class Catagary_books extends AppCompatActivity {
                                 }
 
                                 recycle_adapter.notifyDataSetChanged();
+
                             }
                         }
                     }
