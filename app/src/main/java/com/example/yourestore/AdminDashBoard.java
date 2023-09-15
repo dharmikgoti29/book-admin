@@ -9,7 +9,7 @@ import android.view.View;
 
 public class AdminDashBoard extends AppCompatActivity {
 
-    CardView cardAddCategory,cardAddBooks,viewbooks;
+    CardView cardAddCategory,cardAddBooks,viewbooks,user;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -18,6 +18,7 @@ public class AdminDashBoard extends AppCompatActivity {
         cardAddCategory = findViewById(R.id.add_category_card);
         cardAddBooks = findViewById(R.id.add_book_card);
         viewbooks = findViewById(R.id.card_book);
+        user=findViewById(R.id.home_card);
 
         //open add category activity
         cardAddCategory.setOnClickListener(new View.OnClickListener() {
@@ -39,6 +40,13 @@ public class AdminDashBoard extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent  intent = new Intent(AdminDashBoard.this, view_books.class);
+                startActivity(intent);
+            }
+        });
+        user.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent  intent = new Intent(AdminDashBoard.this, User_manage.class);
                 startActivity(intent);
             }
         });

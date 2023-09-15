@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginBottom="5dp"
+    app:cardBackgroundColor="@color/white"
+    app:cardCornerRadius="7dp"
+    app:cardElevation="12dp"
+    app:contentPadding="5dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:ignore="NotSibling">
+
+
+        <ImageView
+            android:id="@+id/imgView_pdf"
+            android:layout_width="100dp"
+            android:layout_height="140dp"
+            android:paddingLeft="2dp"
+            android:elevation="15dp"
+            android:layout_marginLeft="2dp"
+            android:background="@drawable/forspiner"
+            android:src="@drawable/user"/>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="5dp"
+            android:layout_marginLeft="110dp"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="27dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="Name : "
+                    android:gravity="center"
+                    android:textSize="15dp"
+                    android:textColor="@color/black"
+                    android:layout_marginLeft="5dp"></TextView>
+
+                <TextView
+                    android:id="@+id/user_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="firstname"
+                    android:gravity="center"
+                    android:textColor="@color/black"
+                    android:layout_marginLeft="2dp"></TextView>
+
+                <TextView
+                    android:id="@+id/user_lastname"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="lastname"
+                    android:gravity="center"
+                    android:textColor="@color/black"
+                    android:layout_marginLeft="5dp"></TextView>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="27dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="Age : "
+                    android:gravity="center"
+                    android:textSize="15dp"
+                    android:textColor="@color/black"
+                    android:layout_marginLeft="5dp"></TextView>
+
+                <TextView
+                    android:id="@+id/user_age"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="20"
+                    android:gravity="center"
+                    android:textColor="@color/black"
+                    android:layout_marginLeft="2dp"></TextView>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="27dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="userId : "
+                    android:gravity="center"
+                    android:textSize="15dp"
+                    android:textColor="@color/black"
+                    android:layout_marginLeft="5dp"></TextView>
+
+                <TextView
+                    android:id="@+id/user_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="xy23rsf3ghdthbbcuyf32j3ku"
+                    android:gravity="center"
+                    android:textColor="@color/black"
+                    android:layout_marginLeft="2dp"></TextView>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="27dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="UserName : "
+                    android:gravity="center"
+                    android:textSize="15dp"
+                    android:textColor="@color/black"
+                    android:layout_marginLeft="5dp"></TextView>
+
+                <TextView
+                    android:id="@+id/user_username"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="firstname123"
+                    android:gravity="center"
+                    android:textColor="@color/black"
+                    android:layout_marginLeft="2dp"></TextView>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="27dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="Email : "
+                    android:gravity="center"
+                    android:textSize="15dp"
+                    android:textColor="@color/black"
+                    android:layout_marginLeft="5dp"></TextView>
+
+                <TextView
+                    android:id="@+id/user_useremail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="firstname123@gmail.com"
+                    android:gravity="center"
+                    android:textColor="@color/black"
+                    android:layout_marginLeft="2dp"></TextView>
+
+
+            </LinearLayout>
+
+
+
+
+        </LinearLayout>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:backgroundTint="#F80A1E"
+            android:text="Block user"
+            android:layout_below="@id/imgView_pdf"
+            android:layout_marginTop="2dp"
+            android:gravity="center"
+            android:textSize="17dp"
+            ></Button>
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>
