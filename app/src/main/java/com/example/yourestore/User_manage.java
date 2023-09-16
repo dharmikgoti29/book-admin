@@ -6,7 +6,10 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -21,18 +24,42 @@ public class User_manage extends AppCompatActivity {
 
     RecyclerView rw;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
+    EditText sw;
+    ArrayList<model_user> arrayList;
+    user_adapter userAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_manage);
 
+        sw=findViewById(R.id.edt_Search);
+
         rw=findViewById(R.id.recycleview_user);
-        ArrayList<model_user> arrayList = new ArrayList<>();
-        user_adapter userAdapter = new user_adapter(this,arrayList);
+        arrayList = new ArrayList<>();
+        userAdapter = new user_adapter(this,arrayList);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(this,1);
         rw.setLayoutManager(gridLayoutManager);
         rw.setAdapter(userAdapter);
+
+
+        sw.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                    filter(editable.toString());
+            }
+        });
+
         db.collection("users").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
@@ -55,5 +82,17 @@ public class User_manage extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void filter(String toString) {
+        ArrayList<model_user> list = new ArrayList<>();
+        for(model_user item : arrayList)
+        {
+            if(item.getUserid().contains(toString.toLowerCase()))
+            {
+                list.add(item);
+            }
+        }
+        userAdapter.filter(list);
     }
 }

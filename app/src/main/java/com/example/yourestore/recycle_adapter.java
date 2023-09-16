@@ -174,6 +174,12 @@ public class recycle_adapter extends RecyclerView.Adapter<recycle_adapter.myview
     public int getItemCount() {
         return list.size();
     }
+    public  void filter(ArrayList<model_recycle> filterlist)
+    {
+        list = filterlist;
+        notifyDataSetChanged();
+
+    }
 
     public class myview extends RecyclerView.ViewHolder
     {

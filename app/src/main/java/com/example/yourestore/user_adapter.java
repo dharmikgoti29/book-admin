@@ -45,6 +45,12 @@ public class user_adapter extends RecyclerView.Adapter<user_adapter.myview> {
     public int getItemCount() {
         return list.size();
     }
+    public  void filter(ArrayList<model_user> filterlist)
+    {
+        list = filterlist;
+        notifyDataSetChanged();
+
+    }
 
     public class myview extends RecyclerView.ViewHolder
     {

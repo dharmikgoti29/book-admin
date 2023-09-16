@@ -20,6 +20,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class recycleadapter extends RecyclerView.Adapter<recycleadapter.vieholder>{
 
@@ -87,6 +88,13 @@ public class recycleadapter extends RecyclerView.Adapter<recycleadapter.vieholde
         return list.size();
     }
 
+    public  void filter(ArrayList<model> filterlist)
+    {
+        list = filterlist;
+        notifyDataSetChanged();
+
+    }
+
     public  class  vieholder extends RecyclerView.ViewHolder{
 
         TextView catagaryname;
@@ -100,5 +108,6 @@ public class recycleadapter extends RecyclerView.Adapter<recycleadapter.vieholde
         }
 
     }
+
 
 }

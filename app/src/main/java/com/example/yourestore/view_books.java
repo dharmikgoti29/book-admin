@@ -2,14 +2,18 @@ package com.example.yourestore;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -18,11 +22,15 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class view_books extends AppCompatActivity {
 
     Button addcat,addbook;
+    EditText sw;
     RecyclerView recyclerView;
+    ArrayList<model> recycle_list;
+    recycleadapter recycleadapter;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference myRef = database.getReference("subjects");
     @Override
@@ -33,6 +41,25 @@ public class view_books extends AppCompatActivity {
         addcat=findViewById(R.id.btn_add_categories);
         addbook=findViewById(R.id.btn_add_pdf);
         recyclerView=findViewById(R.id.categoriesList);
+        sw=findViewById(R.id.edt_Search);
+
+        sw.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                filter(editable.toString());
+            }
+        });
+
 
         addcat.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,9 +76,9 @@ public class view_books extends AppCompatActivity {
                     }
         });
 
-        ArrayList<model> recycle_list = new ArrayList<>();
+        recycle_list = new ArrayList<>();
 
-        recycleadapter recycleadapter = new recycleadapter(this,recycle_list);
+        recycleadapter = new recycleadapter(this,recycle_list);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(this,1);
         recyclerView.setLayoutManager(gridLayoutManager);
         recyclerView.setAdapter(recycleadapter);
@@ -79,5 +106,17 @@ public class view_books extends AppCompatActivity {
         });
 
 
+    }
+
+    private void filter(String editable) {
+        ArrayList<model> list = new ArrayList<>();
+        for(model item : recycle_list){
+            if(item.getCatagary().toLowerCase().contains(editable.toLowerCase()))
+            {
+                list.add(item);
+            }
+
+        }
+        recycleadapter.filter((ArrayList<model>) list);
     }
 }

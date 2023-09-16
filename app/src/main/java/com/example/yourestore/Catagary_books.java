@@ -8,7 +8,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.annotation.SuppressLint;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -34,11 +37,33 @@ public class Catagary_books extends AppCompatActivity {
     String subject;
     RecyclerView recyclerView;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
+    EditText sw;
+    ArrayList<model_recycle> recycle_list;
+    recycle_adapter recycle_adapter;
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_catagary_books);
+
+        sw=findViewById(R.id.edt_Search);
+
+        sw.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                filter(editable.toString());
+            }
+        });
 
         String cat_id = getIntent().getStringExtra("catagory_id");
         FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -57,8 +82,8 @@ public class Catagary_books extends AppCompatActivity {
         });
 
         recyclerView=findViewById(R.id.recycle_view);
-        ArrayList<model_recycle> recycle_list = new ArrayList<>();
-        recycle_adapter recycle_adapter = new recycle_adapter(this,recycle_list);
+        recycle_list = new ArrayList<>();
+        recycle_adapter = new recycle_adapter(this,recycle_list);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(this,1);
         recyclerView.setLayoutManager(gridLayoutManager);
         recyclerView.setAdapter(recycle_adapter);
@@ -92,5 +117,17 @@ public class Catagary_books extends AppCompatActivity {
                     }
                 });
 
+    }
+
+    private void filter(String toString) {
+        ArrayList<model_recycle> list = new ArrayList<>();
+        for(model_recycle item : recycle_list){
+            if(item.getBook_title().toLowerCase().contains(toString.toLowerCase()))
+            {
+                list.add(item);
+            }
+
+        }
+        recycle_adapter.filter(list);
     }
 }

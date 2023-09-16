@@ -6,10 +6,29 @@
     android:layout_height="match_parent"
     tools:context=".Catagary_books">
 
+    <EditText
+        android:id="@+id/edt_Search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="@color/white"
+        android:drawableStart="@drawable/search_ic"
+        android:drawablePadding="10dp"
+        android:hint="Enter Book Name"
+        android:padding="11dp"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        tools:ignore="TouchTargetSizeCheck" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/recycle_view"
+        android:layout_below="@id/edt_Search"
+        android:layout_marginTop="5dp"
         ></androidx.recyclerview.widget.RecyclerView>
 
 </RelativeLayout>
