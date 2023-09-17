@@ -60,7 +60,7 @@ public class User_manage extends AppCompatActivity {
             }
         });
 
-        db.collection("users").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+        db.collection("user_detail").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 arrayList.clear();
@@ -68,13 +68,12 @@ public class User_manage extends AppCompatActivity {
                 {
                     for(QueryDocumentSnapshot queryDocumentSnapshot:task.getResult())
                     {
-                        String a = queryDocumentSnapshot.getString("Age");
-                        String b = queryDocumentSnapshot.getString("Email");
-                        String c = queryDocumentSnapshot.getString("firstname");
-                        String d = queryDocumentSnapshot.getString("lastname");
-                        String e = queryDocumentSnapshot.getString("username");
+                        String a = queryDocumentSnapshot.getString("age");
+                        String b = queryDocumentSnapshot.getString("email");
+                        String c = queryDocumentSnapshot.getString("name");
+                        String e = queryDocumentSnapshot.getString("userid");
                         String f = queryDocumentSnapshot.getId();
-                        model_user modelUser = new model_user(a,b,c,d,e,f);
+                        model_user modelUser = new model_user(a,b,c,e,f);
                         arrayList.add(modelUser);
                     }
                     userAdapter.notifyDataSetChanged();
@@ -88,7 +87,7 @@ public class User_manage extends AppCompatActivity {
         ArrayList<model_user> list = new ArrayList<>();
         for(model_user item : arrayList)
         {
-            if(item.getUserid().contains(toString.toLowerCase()))
+            if(item.getUserid().toLowerCase().contains(toString.toLowerCase()))
             {
                 list.add(item);
             }

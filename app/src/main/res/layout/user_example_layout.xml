@@ -35,7 +35,7 @@
             android:orientation="vertical">
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="27dp"
+                android:layout_height="33dp"
                 android:orientation="horizontal">
 
                 <TextView
@@ -56,19 +56,11 @@
                     android:textColor="@color/black"
                     android:layout_marginLeft="2dp"></TextView>
 
-                <TextView
-                    android:id="@+id/user_lastname"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:text="lastname"
-                    android:gravity="center"
-                    android:textColor="@color/black"
-                    android:layout_marginLeft="5dp"></TextView>
 
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="27dp"
+                android:layout_height="33dp"
                 android:orientation="horizontal">
 
                 <TextView
@@ -94,7 +86,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="27dp"
+                android:layout_height="33dp"
                 android:orientation="horizontal">
 
                 <TextView
@@ -112,41 +104,17 @@
                     android:layout_height="match_parent"
                     android:text="xy23rsf3ghdthbbcuyf32j3ku"
                     android:gravity="center"
+                    android:textSize="10dp"
                     android:textColor="@color/black"
                     android:layout_marginLeft="2dp"></TextView>
 
 
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="27dp"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:text="UserName : "
-                    android:gravity="center"
-                    android:textSize="15dp"
-                    android:textColor="@color/black"
-                    android:layout_marginLeft="5dp"></TextView>
-
-                <TextView
-                    android:id="@+id/user_username"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:text="firstname123"
-                    android:gravity="center"
-                    android:textColor="@color/black"
-                    android:layout_marginLeft="2dp"></TextView>
-
-
-            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="27dp"
+                android:layout_height="33dp"
                 android:orientation="horizontal">
 
                 <TextView
@@ -175,16 +143,6 @@
 
         </LinearLayout>
 
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:backgroundTint="#F80A1E"
-            android:text="Block user"
-            android:layout_below="@id/imgView_pdf"
-            android:layout_marginTop="2dp"
-            android:gravity="center"
-            android:textSize="17dp"
-            ></Button>
 
     </RelativeLayout>
 

@@ -1,13 +1,12 @@
 package com.example.yourestore;
 
 public class model_user {
-    String age,email,firstname,lastname,username,userid;
-    model_user(String age,String email,String firstname,String lastname,String username,String userid)
+    String age,email,firstname,username,userid;
+    model_user(String age,String email,String firstname,String username,String userid)
     {
         this.age=age;
         this.email=email;
         this.firstname=firstname;
-        this.lastname=lastname;
         this.username=username;
         this.userid=userid;
 
@@ -39,14 +38,6 @@ public class model_user {
 
     public void setFirstname(String firstname) {
         this.firstname = firstname;
-    }
-
-    public String getLastname() {
-        return lastname;
-    }
-
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
     }
 
     public String getUsername() {

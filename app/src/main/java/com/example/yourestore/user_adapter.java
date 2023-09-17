@@ -4,12 +4,27 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+
 import java.util.ArrayList;
+
+import androidx.annotation.NonNull;
+import android.widget.Toast;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+
 
 public class user_adapter extends RecyclerView.Adapter<user_adapter.myview> {
     Context context;
@@ -32,11 +47,10 @@ public class user_adapter extends RecyclerView.Adapter<user_adapter.myview> {
     @Override
     public void onBindViewHolder(@NonNull myview holder, int position) {
 
+        String userid=list.get(position).toString();
         holder.firstname.setText(list.get(position).firstname);
-        holder.lastname.setText(list.get(position).lastname);
         holder.email.setText(list.get(position).email);
         holder.age.setText(list.get(position).age);
-        holder.username.setText(list.get(position).username);
         holder.userid.setText(list.get(position).username);
 
     }
@@ -54,17 +68,17 @@ public class user_adapter extends RecyclerView.Adapter<user_adapter.myview> {
 
     public class myview extends RecyclerView.ViewHolder
     {
-        TextView firstname,lastname,age,email,username,userid;
+        TextView firstname,age,email,userid;
+
 
         public myview(View itemview) {
             super(itemview);
 
             firstname=itemview.findViewById(R.id.user_name);
-            lastname=itemview.findViewById(R.id.user_lastname);
             age=itemview.findViewById(R.id.user_age);
             email=itemview.findViewById(R.id.user_useremail);
-            username=itemview.findViewById(R.id.user_username);
             userid=itemview.findViewById(R.id.user_id);
+
 
         }
     }
