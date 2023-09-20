@@ -30,8 +30,6 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
-import com.google.protobuf.Empty;
-
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -83,12 +81,7 @@ public class AddBooks extends AppCompatActivity {
         description=textInputLayout_desc.getEditText();
 
 
-        btn_back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                onBackPressed();
-            }
-        });
+        btn_back.setOnClickListener(view -> onBackPressed());
 
         ArrayList<String> spiner_list = new ArrayList<>();
         ArrayAdapter<String> spiner_adapter = new ArrayAdapter<>(this,R.layout.custom_spiner,spiner_list);
@@ -188,6 +181,7 @@ public class AddBooks extends AppCompatActivity {
                             imgReference=storageReference.child(imgname);
                             UploadTask uploadTask1 = imgReference.putFile(input_image);
                             Toast.makeText(AddBooks.this, "book uploaded", Toast.LENGTH_SHORT).show();
+                            onBackPressed();
                         }
                     });
 
