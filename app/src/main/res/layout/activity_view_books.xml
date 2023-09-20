@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/backimg2"
     tools:context=".AdminDashBoard">
 
     <RelativeLayout
@@ -79,17 +80,6 @@
             android:textColor="@color/black"
             tools:ignore="TouchTargetSizeCheck" />
 
-        <Button
-            android:id="@+id/btn_add_pdf"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:background="@drawable/button_shape"
-            android:minHeight="46dp"
-            android:text="  Add  Files  "
-            android:textAllCaps="false"
-            android:textColor="@color/black"
-            tools:ignore="TouchTargetSizeCheck" />
     </LinearLayout>
 
 </RelativeLayout>

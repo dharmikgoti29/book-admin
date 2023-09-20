@@ -6,11 +6,14 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -40,6 +43,7 @@ public class Catagary_books extends AppCompatActivity {
     EditText sw;
     ArrayList<model_recycle> recycle_list;
     recycle_adapter recycle_adapter;
+    Button b1;
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +51,7 @@ public class Catagary_books extends AppCompatActivity {
         setContentView(R.layout.activity_catagary_books);
 
         sw=findViewById(R.id.edt_Search);
-
+        b1=findViewById(R.id.btn_add_files);
         sw.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -62,6 +66,14 @@ public class Catagary_books extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable editable) {
                 filter(editable.toString());
+            }
+        });
+
+        b1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Catagary_books.this,AddBooks.class);
+                startActivity(intent);
             }
         });
 

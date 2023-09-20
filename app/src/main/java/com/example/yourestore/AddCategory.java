@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
@@ -24,6 +25,7 @@ public class AddCategory extends AppCompatActivity {
     TextInputLayout inputLayout;
     EditText addcat;
     Button add;
+    private ProgressBar progressBar;
 
     String catagory;
     @Override
@@ -48,13 +50,14 @@ public class AddCategory extends AppCompatActivity {
                     catagory = addcat.getText().toString();
                     if(catagory.isEmpty())
                     {
-                        Toast.makeText(AddCategory.this, "add text", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(AddCategory.this, "Please add text", Toast.LENGTH_SHORT).show();
                     }
                     else {
                         myRef.push().setValue(catagory).addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void unused) {
                                 Toast.makeText(AddCategory.this, "catagory added successfully", Toast.LENGTH_SHORT).show();
+                                onBackPressed();
                             }
                         }).addOnFailureListener(new OnFailureListener() {
                             @Override

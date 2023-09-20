@@ -257,6 +257,7 @@ public class update_book extends AppCompatActivity {
                                         imgReference=storageReference.child(imgname);
                                         UploadTask uploadTask1 = imgReference.putFile(input_image);
                                         Toast.makeText(update_book.this, "Success fully updated", Toast.LENGTH_SHORT).show();
+                                       onBackPressed();
                                     }
                                 });
 

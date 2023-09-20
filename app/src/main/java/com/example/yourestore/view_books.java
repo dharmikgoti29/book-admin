@@ -26,7 +26,7 @@ import java.util.List;
 
 public class view_books extends AppCompatActivity {
 
-    Button addcat,addbook;
+    Button addcat;
     EditText sw;
     RecyclerView recyclerView;
     ArrayList<model> recycle_list;
@@ -39,7 +39,6 @@ public class view_books extends AppCompatActivity {
         setContentView(R.layout.activity_view_books);
 
         addcat=findViewById(R.id.btn_add_categories);
-        addbook=findViewById(R.id.btn_add_pdf);
         recyclerView=findViewById(R.id.categoriesList);
         sw=findViewById(R.id.edt_Search);
 
@@ -68,13 +67,7 @@ public class view_books extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        addbook.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        Intent intent = new Intent(view_books.this,AddBooks.class);
-                        startActivity(intent);
-                    }
-        });
+
 
         recycle_list = new ArrayList<>();
 
