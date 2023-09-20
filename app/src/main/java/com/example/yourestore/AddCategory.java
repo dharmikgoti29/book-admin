@@ -15,8 +15,11 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class AddCategory extends AppCompatActivity {
 
@@ -53,17 +56,41 @@ public class AddCategory extends AppCompatActivity {
                         Toast.makeText(AddCategory.this, "Please add text", Toast.LENGTH_SHORT).show();
                     }
                     else {
-                        myRef.push().setValue(catagory).addOnSuccessListener(new OnSuccessListener<Void>() {
+                        String tm_cat = addcat.getText().toString().trim().toLowerCase();
+                        myRef.addListenerForSingleValueEvent(new ValueEventListener() {
                             @Override
-                            public void onSuccess(Void unused) {
-                                Toast.makeText(AddCategory.this, "catagory added successfully", Toast.LENGTH_SHORT).show();
-                                onBackPressed();
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                Boolean check = false;
+                                for (DataSnapshot snapshot1 : snapshot.getChildren()) {
+                                    String av_cat = snapshot1.getValue().toString().trim().toLowerCase();
+                                    if (av_cat.equals(tm_cat)) {
+                                        check = true;
+                                        break;
+                                    }
+                                }
+                                if (check == true) {
+                                    Toast.makeText(AddCategory.this, "Catagory is already available", Toast.LENGTH_SHORT).show();
+                                } else if (check == false) {
+                                    myRef.push().setValue(catagory).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                        @Override
+                                        public void onSuccess(Void unused) {
+                                            Toast.makeText(AddCategory.this, "catagory added successfully", Toast.LENGTH_SHORT).show();
+                                            onBackPressed();
+                                        }
+                                    }).addOnFailureListener(new OnFailureListener() {
+                                        @Override
+                                        public void onFailure(@NonNull Exception e) {
+                                            Toast.makeText(AddCategory.this, "failed to add catagory", Toast.LENGTH_SHORT).show();
+                                        }
+                                    });
+                                }
                             }
-                        }).addOnFailureListener(new OnFailureListener() {
+
                             @Override
-                            public void onFailure(@NonNull Exception e) {
-                                Toast.makeText(AddCategory.this, "failed to add catagory", Toast.LENGTH_SHORT).show();
+                            public void onCancelled(@NonNull DatabaseError error) {
+
                             }
+
                         });
                     }
 
