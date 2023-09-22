@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@color/black"
+    android:layout_height="400dp">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:elevation="12dp"
+        android:layout_margin="1dp"
+        app:cardCornerRadius="5dp"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:background="@color/white">
+
+            <ImageView
+                android:id="@+id/demo_image"
+                android:layout_width="match_parent"
+                android:layout_height="225dp"
+                android:scaleType="centerCrop"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="20dp"
+                android:src="@drawable/logo1"></ImageView>
+
+            <TextView
+                android:id="@+id/demo_bookname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:text="natures book"
+                android:gravity="left"
+                android:textSize="17dp"
+                android:layout_marginTop="2dp"
+                android:textColor="@color/black"
+                android:layout_marginRight="10dp"></TextView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/by"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:text="by "
+                    android:textSize="12dp"
+                    android:textColor="#474545"
+                    android:gravity="left"
+                    android:layout_marginLeft="20dp"></TextView>
+
+                <TextView
+                    android:id="@+id/demo_authorname"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:text="abcdefgh"
+                    android:textColor="#474545"
+                    android:layout_marginLeft="5dp"
+                    android:textSize="12dp"></TextView>
+
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/l1"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_gravity="bottom|center"
+            android:layout_marginBottom="10dp"
+            android:clickable="true"
+            android:padding="5dp"
+            android:background="#212957"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:orientation="horizontal"
+           >
+            <ImageButton
+                android:id="@+id/imgbtn1"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_gravity="center"
+                android:layout_marginLeft="5dp"
+                android:src="@drawable/favorite_ic_5"></ImageButton>
+            <TextView
+                android:id="@+id/textbutton"
+                android:layout_width="wrap_content"
+                android:layout_height="15dp"
+                android:layout_gravity="center"
+                android:layout_marginLeft="10dp"
+                android:text="Add to Faurite"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:src="@drawable/favorite_ic_5"></TextView>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
+</LinearLayout>
+
+
