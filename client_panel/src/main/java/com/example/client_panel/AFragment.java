@@ -1,10 +1,13 @@
 package com.example.client_panel;
 
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -60,10 +63,44 @@ public class AFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View root =  inflater.inflate(R.layout.fragment_a, container, false);
+
+        EditText edt_search = root.findViewById(R.id.edt_Search);
         RecyclerView rw1 =root.findViewById(R.id.rw1);
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         ArrayList<model_A> list = new ArrayList<>();
         a_adapter adapter = new a_adapter(getContext(),list);
+
+        edt_search.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                filter(editable.toString());
+            }
+
+            private void filter(String toString) {
+                ArrayList<model_A> list1 = new ArrayList<>();
+                for(model_A item : list){
+                    if(item.getBook_name().toLowerCase().contains(toString.toLowerCase()))
+                    {
+                        list1.add(item);
+                    }
+
+                }
+                adapter.filter(list1);
+            }
+        });
+
+
+
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(),2);
         rw1.setLayoutManager(gridLayoutManager);
         rw1.setAdapter(adapter);
@@ -88,6 +125,8 @@ public class AFragment extends Fragment {
                         }
                     }
                 });
+
         return root;
     }
+
 }

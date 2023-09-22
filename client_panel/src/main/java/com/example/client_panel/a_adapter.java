@@ -77,6 +77,13 @@ public class a_adapter extends RecyclerView.Adapter<a_adapter.myview> {
         return list.size();
     }
 
+    public  void filter(ArrayList<model_A> filterlist)
+    {
+        list = filterlist;
+        notifyDataSetChanged();
+
+    }
+
     public class myview extends RecyclerView.ViewHolder{
 
         TextView t1,t2;
