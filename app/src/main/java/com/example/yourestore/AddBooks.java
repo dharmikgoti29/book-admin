@@ -166,7 +166,6 @@ public class AddBooks extends AppCompatActivity {
                     Map<String,Object> book_detail = new HashMap<>();
                     book_detail.put("bookname",bookname);
                     book_detail.put("authorname",authorname);
-                    book_detail.put("authorname",authorname);
                     book_detail.put("subject",cata);
                     book_detail.put("discription",desc);
                     book_detail.put("upload_date",dateString);

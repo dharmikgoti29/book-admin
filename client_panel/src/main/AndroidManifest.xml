@@ -9,6 +9,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.YoureStore">
         <activity
+            android:name=".read_book"
+            android:exported="false" />
+        <activity
             android:name=".catagory_view_book"
             android:exported="false" />
         <activity

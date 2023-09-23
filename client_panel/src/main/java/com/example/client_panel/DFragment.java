@@ -1,11 +1,16 @@
 package com.example.client_panel;
 
+import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import androidx.fragment.app.Fragment;
+
+import com.google.firebase.auth.FirebaseAuth;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -58,6 +63,26 @@ public class DFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_d, container, false);
+        View v =  inflater.inflate(R.layout.fragment_d, container, false);
+
+          @SuppressLint({"MissingInflatedId", "LocalSuppress"}) Button logout=  v.findViewById(R.id.logout);
+
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                try {
+                    FirebaseAuth auth = FirebaseAuth.getInstance();
+                    auth.signOut();
+                    Intent intent = new Intent(getContext(),log_in_page.class);
+                    startActivity(intent);
+                    getActivity().finish();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    // Handle the exception appropriately, e.g., show a Toast with an error message
+                }
+            }
+        });
+
+        return  v;
     }
 }

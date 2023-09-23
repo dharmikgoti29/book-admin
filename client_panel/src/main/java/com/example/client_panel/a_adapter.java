@@ -1,6 +1,7 @@
 package com.example.client_panel;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,10 +17,16 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class a_adapter extends RecyclerView.Adapter<a_adapter.myview> {
 
@@ -66,7 +73,29 @@ public class a_adapter extends RecyclerView.Adapter<a_adapter.myview> {
         holder.l1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(context, "hello", Toast.LENGTH_SHORT).show();
+                FirebaseFirestore db = FirebaseFirestore.getInstance();
+                FirebaseAuth auth = FirebaseAuth.getInstance();
+                FirebaseUser user = auth.getCurrentUser();
+                String uid = user.getUid();
+                Map<String , Object> map = new HashMap<>();
+                map.put("cat_id",catid);
+                db.collection("user_detail").document(uid).collection("faurite").add(map).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                    @Override
+                    public void onSuccess(DocumentReference documentReference) {
+                        Toast.makeText(context, "book added into your collection", Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+        });
+
+        //inside
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, read_book.class);
+                intent.putExtra("cat_id",catid);
+                context.startActivity(intent);
             }
         });
 
