@@ -1,5 +1,6 @@
 package com.example.yourestore;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
@@ -50,7 +51,7 @@ public class recycle_adapter extends RecyclerView.Adapter<recycle_adapter.myview
     }
 
     @Override
-    public void onBindViewHolder(@NonNull myview holder, int position) {
+    public void onBindViewHolder(@NonNull myview holder, @SuppressLint("RecyclerView") int position) {
         holder.bname.setText(list.get(position).book_title);
         holder.aname.setText(list.get(position).book_author);
         holder.desc.setText(list.get(position).description);
@@ -88,7 +89,6 @@ public class recycle_adapter extends RecyclerView.Adapter<recycle_adapter.myview
                             Intent intent = new Intent(context,update_book.class);
                             intent.putExtra("documentid",documentid);
                             context.startActivity(intent);
-
                             return true;
                         } else if (itemId == R.id.action_delete) {
                             AlertDialog.Builder builder = new AlertDialog.Builder(context);
@@ -110,6 +110,8 @@ public class recycle_adapter extends RecyclerView.Adapter<recycle_adapter.myview
                                                                 @Override
                                                                 public void onSuccess(Void aVoid) {
                                                                     Toast.makeText(context, "book deleted", Toast.LENGTH_SHORT).show();
+                                                                    list.remove(position);
+                                                                    notifyDataSetChanged();
                                                                 }
                                                             })
                                                             .addOnFailureListener(new OnFailureListener() {
