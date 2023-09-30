@@ -1,5 +1,6 @@
 package com.example.yourestore;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -86,6 +87,7 @@ public class recycleadapter extends RecyclerView.Adapter<recycleadapter.vieholde
                 Intent intent = new Intent(context,Catagary_books.class);
                 intent.putExtra("catagory_id",cat_id);
                 context.startActivity(intent);
+                ((Activity)context).finish();
             }
         });
     }

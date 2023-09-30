@@ -70,6 +70,7 @@ public class update_book extends AppCompatActivity {
     StorageReference storageReference=storage.getReference();
     StorageReference pdfReference,imgReference;
     String subject_selected;
+    String intentcat_id;
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -193,6 +194,24 @@ public class update_book extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 cata=adapterView.getItemAtPosition(i).toString();
+                myRef.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        for(DataSnapshot dataSnapshot : snapshot.getChildren())
+                        {
+                            String tempstr = dataSnapshot.getValue().toString();
+                            if(tempstr.equals(cata))
+                            {
+                                intentcat_id = dataSnapshot.getKey().toString();
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
             }
 
             @Override
@@ -257,7 +276,10 @@ public class update_book extends AppCompatActivity {
                                         imgReference=storageReference.child(imgname);
                                         UploadTask uploadTask1 = imgReference.putFile(input_image);
                                         Toast.makeText(update_book.this, "Success fully updated", Toast.LENGTH_SHORT).show();
-                                       onBackPressed();
+                                        Intent intent = new Intent(update_book.this,Catagary_books.class);
+                                        intent.putExtra("catagory_id",intentcat_id);
+                                        startActivity(intent);
+                                        finish();
                                     }
                                 });
 

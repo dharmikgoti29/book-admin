@@ -83,7 +83,7 @@
                     android:orientation="horizontal"
                     >
                     <Button
-                        android:text="view pdf"
+                        android:text="view"
                         android:textAlignment="textStart"
                         android:id="@+id/upload_pdf"
                         android:layout_width="125dp"
@@ -91,12 +91,12 @@
                         android:drawableEnd="@drawable/book123"
                         android:background="@drawable/forspiner"/>
                     <Button
-                        android:text="insert pdf"
+                        android:text="update"
                         android:textAlignment="textStart"
                         android:id="@+id/insert_pdf"
                         android:layout_width="125dp"
                         android:layout_height="40dp"
-                        android:layout_marginLeft="12dp"
+                        android:layout_marginLeft="10dp"
                         android:drawableEnd="@drawable/book123"
                         android:background="@drawable/forspiner"/>
 

@@ -62,6 +62,7 @@ public class AddBooks extends AppCompatActivity {
 
     StorageReference storageReference=storage.getReference();
     StorageReference pdfReference,imgReference;
+    String default_sub;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,6 +83,8 @@ public class AddBooks extends AppCompatActivity {
 
 
         btn_back.setOnClickListener(view -> onBackPressed());
+
+
 
         ArrayList<String> spiner_list = new ArrayList<>();
         ArrayAdapter<String> spiner_adapter = new ArrayAdapter<>(this,R.layout.custom_spiner,spiner_list);
@@ -138,14 +141,53 @@ public class AddBooks extends AppCompatActivity {
         catagary.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                cata=adapterView.getItemAtPosition(i).toString();
+                cata = adapterView.getItemAtPosition(i).toString();
+                Intent intent = getIntent();
+
+                if (intent.hasExtra("sub_id")) {
+                    String sub_id = intent.getStringExtra("sub_id");
+
+                    myRef.child(sub_id).addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            if (snapshot.exists()) {
+                                // Data exists at the specified location
+                                default_sub = snapshot.getValue(String.class);
+
+                                // Update the Spinner's selection with the value of default_sub
+                                int index = getIndexForValue(default_sub);
+                                if (index != -1) {
+                                    catagary.setSelection(index);
+                                }
+                            } else {
+                                // Data does not exist at the specified location
+                                // Handle this case if needed
+                            }
+                        }
+
+                        private int getIndexForValue(String defaultSub) {
+                            for (int i = 0; i < catagary.getCount(); i++) {
+                                if (catagary.getItemAtPosition(i).toString().equals(defaultSub)) {
+                                    return i;
+                                }
+                            }
+                            return -1;
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+                            // Handle the error if the read operation is canceled or fails
+                        }
+                    });
+                }
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
-
+                // Handle the case when nothing is selected in the Spinner
             }
         });
+
         insert_book.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

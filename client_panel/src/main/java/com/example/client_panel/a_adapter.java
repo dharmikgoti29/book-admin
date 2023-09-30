@@ -93,6 +93,7 @@ public class a_adapter extends RecyclerView.Adapter<a_adapter.myview> {
                         if(fcat_id.equals(catid))
                         {
                             holder.t3.setText("Remove");
+                            holder.imgbtn.setImageResource(R.drawable.baseline_favorite_red);
                             break;
                         }
                     }
@@ -115,7 +116,7 @@ public class a_adapter extends RecyclerView.Adapter<a_adapter.myview> {
                        public void onSuccess(DocumentReference documentReference) {
                            Toast.makeText(context, "book added into your collection", Toast.LENGTH_SHORT).show();
                            holder.t3.setText("Remove");
-
+                           holder.imgbtn.setImageResource(R.drawable.baseline_favorite_red);
                        }
                    });
                }
@@ -137,8 +138,7 @@ public class a_adapter extends RecyclerView.Adapter<a_adapter.myview> {
 
                                                 Toast.makeText(context, "removed from wishlist", Toast.LENGTH_SHORT).show();
                                                 holder.t3.setText("Add to wishlist");
-                                                list.remove(position);
-                                                notifyDataSetChanged();
+                                                holder.imgbtn.setImageResource(R.drawable.faurite_white);
                                             }
                                         })   ;
                                     }

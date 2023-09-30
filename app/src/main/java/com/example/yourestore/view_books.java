@@ -101,6 +101,13 @@ public class view_books extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(view_books.this,AdminDashBoard.class);
+        startActivity(intent);
+        finishAffinity();
+    }
+
     private void filter(String editable) {
         ArrayList<model> list = new ArrayList<>();
         for(model item : recycle_list){

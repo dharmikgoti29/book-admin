@@ -38,6 +38,7 @@ import javax.security.auth.Subject;
 public class Catagary_books extends AppCompatActivity {
 
     String subject;
+    String cat_id;
     RecyclerView recyclerView;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     EditText sw;
@@ -52,6 +53,8 @@ public class Catagary_books extends AppCompatActivity {
 
         sw=findViewById(R.id.edt_Search);
         b1=findViewById(R.id.btn_add_files);
+
+
         sw.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -69,15 +72,9 @@ public class Catagary_books extends AppCompatActivity {
             }
         });
 
-        b1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(Catagary_books.this,AddBooks.class);
-                startActivity(intent);
-            }
-        });
 
-        String cat_id = getIntent().getStringExtra("catagory_id");
+
+        cat_id = getIntent().getStringExtra("catagory_id");
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("subjects").child(cat_id);
         myRef.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -90,6 +87,14 @@ public class Catagary_books extends AppCompatActivity {
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
+            }
+        });
+        b1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Catagary_books.this,AddBooks.class);
+                intent.putExtra("sub_id",cat_id);
+                startActivity(intent);
             }
         });
 
@@ -129,6 +134,15 @@ public class Catagary_books extends AppCompatActivity {
                     }
                 });
 
+
+
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(Catagary_books.this,view_books.class);
+        startActivity(intent);
+        finishAffinity();
     }
 
     private void filter(String toString) {
