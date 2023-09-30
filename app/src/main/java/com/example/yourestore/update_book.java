@@ -71,6 +71,8 @@ public class update_book extends AppCompatActivity {
     StorageReference pdfReference,imgReference;
     String subject_selected;
     String intentcat_id;
+    String default_sub;
+    boolean isSelectionProgrammatic;
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -190,28 +192,30 @@ public class update_book extends AppCompatActivity {
                 startActivityForResult(intent, pdf);
             }
         });
+        isSelectionProgrammatic = false; // Flag to track programmatic selection
+
         catagary.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 cata=adapterView.getItemAtPosition(i).toString();
-                myRef.addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        for(DataSnapshot dataSnapshot : snapshot.getChildren())
-                        {
-                            String tempstr = dataSnapshot.getValue().toString();
-                            if(tempstr.equals(cata))
-                            {
-                                intentcat_id = dataSnapshot.getKey().toString();
-                            }
-                        }
-                    }
+               myRef.addValueEventListener(new ValueEventListener() {
+                   @Override
+                   public void onDataChange(@NonNull DataSnapshot snapshot) {
+                       for(DataSnapshot dataSnapshot : snapshot.getChildren())
+                       {
+                           if(dataSnapshot.getValue().equals(cata))
+                           {
+                               intentcat_id = dataSnapshot.getKey().toString();
+                           }
+                       }
+                   }
 
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
+                   @Override
+                   public void onCancelled(@NonNull DatabaseError error) {
 
-                    }
-                });
+                   }
+               });
+
             }
 
             @Override

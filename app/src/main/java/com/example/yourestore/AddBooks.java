@@ -54,7 +54,7 @@ public class AddBooks extends AppCompatActivity {
 
     Integer pic=100;
     Integer pdf=200;
-
+    String intentcat_id;
     Uri input_image,input_pdf;
 
     FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -63,6 +63,8 @@ public class AddBooks extends AppCompatActivity {
     StorageReference storageReference=storage.getReference();
     StorageReference pdfReference,imgReference;
     String default_sub;
+    int c ;
+    boolean isSettingSelectionProgrammatically;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -138,45 +140,30 @@ public class AddBooks extends AppCompatActivity {
             }
 
         });
+
         catagary.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                cata = adapterView.getItemAtPosition(i).toString();
-                Intent intent = getIntent();
 
-                if (intent.hasExtra("sub_id")) {
-                    String sub_id = intent.getStringExtra("sub_id");
-
-                    myRef.child(sub_id).addListenerForSingleValueEvent(new ValueEventListener() {
+                if (!isSettingSelectionProgrammatically) {
+                    cata = adapterView.getItemAtPosition(i).toString();
+                    myRef.addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            if (snapshot.exists()) {
-                                // Data exists at the specified location
-                                default_sub = snapshot.getValue(String.class);
 
-                                // Update the Spinner's selection with the value of default_sub
-                                int index = getIndexForValue(default_sub);
-                                if (index != -1) {
-                                    catagary.setSelection(index);
-                                }
-                            } else {
-                                // Data does not exist at the specified location
-                                // Handle this case if needed
-                            }
-                        }
-
-                        private int getIndexForValue(String defaultSub) {
-                            for (int i = 0; i < catagary.getCount(); i++) {
-                                if (catagary.getItemAtPosition(i).toString().equals(defaultSub)) {
-                                    return i;
+                            for(DataSnapshot snapshot1 : snapshot.getChildren())
+                            {
+                                if(snapshot1.getValue().toString().equals(cata))
+                                {
+                                    intentcat_id = snapshot1.getKey().toString();
                                 }
                             }
-                            return -1;
+
                         }
 
                         @Override
                         public void onCancelled(@NonNull DatabaseError error) {
-                            // Handle the error if the read operation is canceled or fails
+
                         }
                     });
                 }
@@ -184,9 +171,48 @@ public class AddBooks extends AppCompatActivity {
 
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
-                // Handle the case when nothing is selected in the Spinner
+
             }
         });
+
+
+        Intent intent = getIntent();
+        if (intent.hasExtra("sub_id")) {
+            String sub_id = intent.getStringExtra("sub_id");
+            c = 10;
+            myRef.child(sub_id).addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    if (snapshot.exists()) {
+                        default_sub = snapshot.getValue(String.class);
+
+                        int index = getIndexForValue(default_sub);
+                        if (index != -1) {
+
+                            isSettingSelectionProgrammatically = true;
+                            catagary.setSelection(index);
+
+                            isSettingSelectionProgrammatically = false;
+                        }
+                    }
+                }
+
+                private int getIndexForValue(String defaultSub) {
+                    for (int i = 0; i < catagary.getCount(); i++) {
+                        if (catagary.getItemAtPosition(i).toString().equals(defaultSub)) {
+                            return i;
+                        }
+                    }
+                    return -1;
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
+        }
+
 
         insert_book.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -222,7 +248,17 @@ public class AddBooks extends AppCompatActivity {
                             imgReference=storageReference.child(imgname);
                             UploadTask uploadTask1 = imgReference.putFile(input_image);
                             Toast.makeText(AddBooks.this, "book uploaded", Toast.LENGTH_SHORT).show();
-                            onBackPressed();
+                            if(c == 10)
+                            {
+                                Intent intent1 = new Intent(AddBooks.this,Catagary_books.class);
+                                intent1.putExtra("catagory_id",intentcat_id);
+                                startActivity(intent1);
+                                finish();
+                            }
+                            else {
+                                onBackPressed();
+                            }
+
                         }
                     });
 
