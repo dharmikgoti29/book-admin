@@ -269,7 +269,6 @@ public class update_book extends AppCompatActivity {
                                 book_detail.put("authorname", authorname);
                                 book_detail.put("subject", cata);
                                 book_detail.put("discription", desc);
-                                book_detail.put("upload_date", dateString);
                                 db.collection("books").document(documentid).update(book_detail).addOnSuccessListener(new OnSuccessListener<Void>() {
                                     @Override
                                     public void onSuccess(Void unused) {
