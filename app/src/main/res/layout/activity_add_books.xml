@@ -158,8 +158,10 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center"
+                        android:layout_margin="5dp"
                         android:textColor="@color/black"
                         android:textAlignment="center"
+                        android:backgroundTint="@color/white"
                         android:paddingLeft="2dp"></Spinner>
                 </LinearLayout>
 
@@ -197,6 +199,7 @@
                     android:layout_height="60dp"
                     android:background="@drawable/button_shape"
                     android:text="Upload"
+                    android:layout_marginTop="50dp"
                     app:cornerRadius="32dp" />
             </LinearLayout>
         </ScrollView>

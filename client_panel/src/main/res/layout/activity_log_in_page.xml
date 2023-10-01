@@ -47,7 +47,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Admin"
+                android:text="Welcome Back"
                 android:layout_gravity="center"
                 android:textColor="#000000"
                 android:textSize="31dp"

@@ -175,6 +175,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center"
+                        android:layout_margin="5dp"
                         android:textColor="@color/black"
                         android:textAlignment="center"
                         android:background="@android:color/transparent"
@@ -192,7 +193,7 @@
                     app:hintEnabled="true">
 
                     <EditText
-
+                        android:lineSpacingMultiplier="10"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:drawablePadding="11dp"
@@ -201,6 +202,7 @@
                         android:padding="11dp"
                         android:textColor="@color/black"
                         android:textColorHint="@color/black"
+
                         tools:ignore="TouchTargetSizeCheck" />
 
                 </com.google.android.material.textfield.TextInputLayout>
@@ -215,7 +217,8 @@
                     android:layout_height="60dp"
                     android:background="@drawable/button_shape"
                     android:text="Update book"
-                    app:cornerRadius="32dp" />
+                    app:cornerRadius="32dp"
+                    android:layout_marginTop="50dp"/>
             </LinearLayout>
         </ScrollView>
     </androidx.cardview.widget.CardView>

@@ -23,6 +23,7 @@
             android:paddingLeft="2dp"
             android:elevation="15dp"
             android:layout_marginLeft="2dp"
+            android:scaleType="fitXY"
             android:background="@drawable/forspiner"
             android:src="@drawable/user"/>
 
