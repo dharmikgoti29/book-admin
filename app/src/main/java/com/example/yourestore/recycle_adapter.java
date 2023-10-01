@@ -88,6 +88,7 @@ public class recycle_adapter extends RecyclerView.Adapter<recycle_adapter.myview
 
                             Intent intent = new Intent(context,update_book.class);
                             intent.putExtra("documentid",documentid);
+                            intent.putExtra("defaultsub",list.get(position).subject);
                             context.startActivity(intent);
                             return true;
                         } else if (itemId == R.id.action_delete) {

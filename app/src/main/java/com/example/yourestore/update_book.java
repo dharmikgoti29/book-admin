@@ -69,9 +69,8 @@ public class update_book extends AppCompatActivity {
 
     StorageReference storageReference=storage.getReference();
     StorageReference pdfReference,imgReference;
-    String subject_selected;
+    String subject_selected="default value";
     String intentcat_id;
-    String default_sub;
     boolean isSelectionProgrammatic;
     @SuppressLint("MissingInflatedId")
     @Override
@@ -96,6 +95,7 @@ public class update_book extends AppCompatActivity {
 
 
         String documentid = getIntent().getStringExtra("documentid");
+        subject_selected = getIntent().getStringExtra("defaultsub");
         db.collection("books").document(documentid).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
@@ -104,7 +104,6 @@ public class update_book extends AppCompatActivity {
                     book_name.setText(documentSnapshot.getString("bookname"));
                     author_name.setText(documentSnapshot.getString("authorname"));
                     description.setText(documentSnapshot.getString("discription"));
-                    subject_selected = documentSnapshot.getString("subject").toString();
                 }
             }
         });
@@ -137,16 +136,26 @@ public class update_book extends AppCompatActivity {
         });
 
         ArrayList<String> spiner_list = new ArrayList<>();
-        ArrayAdapter<String> spiner_adapter = new ArrayAdapter<>(this,R.layout.custom_spiner,spiner_list);
+        ArrayAdapter<String> spiner_adapter = new ArrayAdapter<>(this, R.layout.custom_spiner, spiner_list);
         catagary.setAdapter(spiner_adapter);
+
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-
                 spiner_list.clear();
-                for(DataSnapshot snapshot1 : snapshot.getChildren())
-                {
-                    spiner_list.add(snapshot1.getValue().toString());
+
+
+                spiner_list.add(subject_selected);
+
+                for (DataSnapshot snapshot1 : snapshot.getChildren()) {
+                    if(subject_selected.equals(snapshot1.getValue().toString()))
+                    {
+                        continue;
+                    }
+                    else{
+                        spiner_list.add(snapshot1.getValue().toString());
+                    }
+
                 }
                 spiner_adapter.notifyDataSetChanged();
             }
@@ -156,7 +165,8 @@ public class update_book extends AppCompatActivity {
 
             }
         });
-
+        isSelectionProgrammatic = true;
+        catagary.setSelection(0);
         img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -197,32 +207,37 @@ public class update_book extends AppCompatActivity {
         catagary.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                cata=adapterView.getItemAtPosition(i).toString();
-               myRef.addValueEventListener(new ValueEventListener() {
-                   @Override
-                   public void onDataChange(@NonNull DataSnapshot snapshot) {
-                       for(DataSnapshot dataSnapshot : snapshot.getChildren())
-                       {
-                           if(dataSnapshot.getValue().equals(cata))
-                           {
-                               intentcat_id = dataSnapshot.getKey().toString();
-                           }
-                       }
-                   }
+                if (!isSelectionProgrammatic) {
+                    // Only update cata and intentcat_id when the user selects an item
+                    cata = adapterView.getItemAtPosition(i).toString();
+                    myRef.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                                if (dataSnapshot.getValue().equals(cata)) {
+                                    intentcat_id = dataSnapshot.getKey().toString();
+                                }
+                            }
+                        }
 
-                   @Override
-                   public void onCancelled(@NonNull DatabaseError error) {
-
-                   }
-               });
-
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+                            // Handle the error if needed
+                        }
+                    });
+                } else {
+                    // Reset the flag after programmatic selection
+                    isSelectionProgrammatic = false;
+                }
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
-
+                // Handle the case when nothing is selected
             }
         });
+
+
         insert_book.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -257,7 +272,6 @@ public class update_book extends AppCompatActivity {
                             desc = description.getText().toString();
                             Date currentDate = new Date();
                             SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
-                            String dateString = dateFormat.format(currentDate);
 
                             if (bookname.isEmpty() || authorname.isEmpty() || desc.isEmpty() || cata.isEmpty() || input_pdf == null || input_image == null) {
                                 Toast.makeText(update_book.this, "Add value first", Toast.LENGTH_SHORT).show();
@@ -296,6 +310,8 @@ public class update_book extends AppCompatActivity {
         });
 
     }
+
+
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode == pic)
